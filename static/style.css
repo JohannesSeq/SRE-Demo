@@ -1,12 +1,19 @@
-body {
-    margin-bottom:50px;
-}
+
 
 footer {
-    background-color: #dfdede;
+    background-color: #0f0f18;
     padding-top: 10px;
     padding-bottom: 0px;
     position:fixed;
     bottom:0;
     width:100%;
+}
+
+header {
+    background-color: rgb(35, 35, 75);
+}
+
+#HeaderText{
+    font-size: larger;
+    color:#a9a3f5;
 }
