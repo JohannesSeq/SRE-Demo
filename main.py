@@ -1,5 +1,6 @@
 #Libraries declaration
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, redirect, url_for
+import os
 
 
 #Defining application name
@@ -10,8 +11,35 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+#Creating the function for the first monitorization site
+@app.route("/monitoring1")
+def mon1():
+    return "monitoring site 1!"
+
+#Creating the function for the first monitorization site
+@app.route("/monitoring2")
+def mon2():
+    return "monitoring site 2!"
+
+#Creating the function for the first monitorization site
+@app.route("/alerts")
+def alerts():
+    return "Alerts site!"
+
+#Creating the function for the first monitorization site
+@app.route("/incidents")
+def incidents():
+    return "incidents site!"
 
 #Application excecution
 if __name__ == "__main__":
-    app.run(debug = True)
+    #Settings to run the application publicly
+    port = int(os.environ.get('PORT', 7575))
+    app.run(host='0.0.0.0', port=port)
     
+    #SSL Configurations to enable HTTPS
+    app.run(ssl_context='adhoc')
+    #pip install pyopenssl -- to install openssl and use certificates
+
+    #Start running the application
+    app.run(debug = True)
