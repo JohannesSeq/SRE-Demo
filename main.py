@@ -1,10 +1,18 @@
 #Libraries declaration
 from flask import Flask, jsonify, request, render_template, redirect, url_for
 import os
+import datetime
 
 
 #Defining application name
 app = Flask(__name__)
+
+#Logging enable
+logging = True
+
+def logging():
+    LogName = "Verbose_" + ""
+    Log = open(,"x")
 
 #Creating the function for the site index
 @app.route("/")
@@ -14,7 +22,7 @@ def index():
 #Creating the function for the first monitorization site
 @app.route("/monitoring1")
 def mon1():
-    return "monitoring site 1!"
+    return render_template("monitoring1.html")
 
 #Creating the function for the first monitorization site
 @app.route("/monitoring2")
