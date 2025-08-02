@@ -1,7 +1,6 @@
 #Libraries declaration
 from flask import Flask, jsonify, request, render_template, redirect, url_for
-import os
-import datetime
+import datetime, os
 
 
 #Defining application name
@@ -10,9 +9,9 @@ app = Flask(__name__)
 #Logging enable
 logging = True
 
-def logging():
+def loggingFunc():
     LogName = "Verbose_" + ""
-    Log = open(,"x")
+    
 
 #Creating the function for the site index
 @app.route("/")
@@ -45,9 +44,16 @@ if __name__ == "__main__":
     port = int(os.environ.get('PORT', 7575))
     app.run(host='0.0.0.0', port=port)
     
-    #SSL Configurations to enable HTTPS
-    app.run(ssl_context='adhoc')
-    #pip install pyopenssl -- to install openssl and use certificates
+    if logging == True:
+        
+        #Variable Declaration
+        executionStart = datetime.datetime.now()
+        LogName = ''
+        VerboseContents = ''
 
-    #Start running the application
-    app.run(debug = True)
+        #Creation of the log file name
+        app.run(debug = True)
+    else:
+        #Start running the application
+        app.run(debug = True)     
+
