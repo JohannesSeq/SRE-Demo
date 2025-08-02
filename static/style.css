@@ -1,0 +1,12 @@
+body {
+    margin-bottom:50px;
+}
+
+footer {
+    background-color: #dfdede;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
