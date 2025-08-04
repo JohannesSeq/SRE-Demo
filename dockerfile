@@ -2,7 +2,7 @@
 FROM python:latest
 
 #We copy the contents from the local repository to the app repository, where our code will be stored on the container
-COPY ["../../SRE-Demo", "/usr/src/app"]
+COPY [".", "/usr/src/app"]
 
 #We set our directory to the app directory
 WORKDIR /usr/src/app
