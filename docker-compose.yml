@@ -1,0 +1,8 @@
+version: "1.0"
+name: monintoringappcomposer
+services:
+  monintoringapp:
+ #We name the image as pythonmonitoring, the image will be taken from the dockerfile 
+    image: pythonmonitoring
+    ports:
+      - "7575:7575"

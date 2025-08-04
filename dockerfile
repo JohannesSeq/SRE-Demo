@@ -1,0 +1,20 @@
+#We select the base image, in this case will be python
+FROM python:latest
+
+#We copy the contents from the local repository to the app repository, where our code will be stored on the container
+COPY [".", "/usr/src/app"]
+
+#We set our directory to the app directory
+WORKDIR /usr/src/app
+
+#We run the updates to ensure that our container is running on the latest version
+RUN apt-get update -y && apt-get upgrade -y
+
+#We install Flask
+RUN pip install flask
+
+#We expose the application on the port 7575
+EXPOSE 7575
+
+#Finally, this is the we define the excecutions
+CMD ["python3", "main.py"]
