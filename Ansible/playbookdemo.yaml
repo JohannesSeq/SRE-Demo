@@ -9,12 +9,12 @@
       changed_when: "'Done' in minikube_start.stdout"
       ignore_errors: yes
       args:
-        chdir: ..
+        chdir: ".."
     
 
   #2. Starting Prometheus
     - name: Starting Prometheus on Minikube
-      command: kubectl apply -f prometheus.yml
+      command: kubectl apply -f prometheus.yaml
       args:
-        chdir: ./Kubernetes/
+        chdir: "./Kubernetes/"
     
