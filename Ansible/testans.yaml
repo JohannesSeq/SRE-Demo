@@ -1,0 +1,28 @@
+- name: demo #The name of the playbook
+  hosts: all #The hosts that will be part of the playbook  
+  
+  tasks:
+
+    - command:
+        chdir: /data/example
+        cmd: ls
+      register: result
+      tags: t1
+
+    - shell:
+        chdir: /data/example
+        cmd: ls
+      register: result
+      tags: t2
+
+    - command: chdir=/data/example ls
+      register: result
+      tags: t3
+
+    - shell: chdir=/data/example ls
+      register: result
+      tags: t4
+
+    - debug:
+        var: result.stdout
+      tags: always
