@@ -11,8 +11,7 @@ then
     #clone of the github repo
     git clone https://github.com/JohannesSeq/SRE-Demo.git
     #Setup of the file
-    cd Bash/
-    statusval="setup" > config.txt
+    cd SRE-DEMO/Bash/
     echo "Project has been clonned and the setup has been completed!"
     cd ..
     ls
