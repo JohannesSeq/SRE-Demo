@@ -20,6 +20,7 @@ else
     #Update the files and setup the k8s cluster up and running
     echo "Project has been setup... Proceeding with the excecution."
     cd ..
+    git pull
     ls
 fi
 echo "Excecution ended!"
