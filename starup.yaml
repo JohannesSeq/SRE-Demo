@@ -8,9 +8,6 @@
       register: minikube_start
       changed_when: "'Done' in minikube_start.stdout"
       ignore_errors: yes
-      args:
-        chdir: ".."
-    
 
   #2. Starting Prometheus
     - name: Starting Prometheus on Minikube
