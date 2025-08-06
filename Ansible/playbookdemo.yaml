@@ -11,7 +11,7 @@
 
   #2. Starting Prometheus
     - name: Starting Prometheus on Minikube
-      command: ls
+      ansible.builtin.shell: ls -l
       args:
         chdir: ../Kubernetes/
     
