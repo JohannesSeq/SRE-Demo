@@ -1,9 +1,12 @@
-- name: My first play
-  hosts: all
+#This is a basic playbook that perform a ping and prints a msg on the screen.
+- name: My first play #The name of the playbook
+  hosts: all #The hosts that will be part of the playbook
   tasks:
+    #Task Num#1, excecute a ping
    - name: Ping my hosts
      ansible.builtin.ping:
 
+    #Task Num#2: Print a hello world.
    - name: Print message
      ansible.builtin.debug:
-       msg: Hello world
+       msg: Hello world
