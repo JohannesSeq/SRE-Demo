@@ -5,7 +5,6 @@ metadata:
   name: monitoring # The name will be metadata
 
 ---
-#Config map to store the Prometheus settings
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -13,16 +12,29 @@ metadata:
   namespace: monitoring #We associate the config map to the namespace
   labels:
     app: prometheus
-  #Values of the configuration:
+     #Values of the configuration:
 data:
+#We inculde cadvisor as a scrape.
   prometheus.yml: |
     global:
       scrape_interval: 15s
-
     scrape_configs:
       - job_name: 'prometheus'
         static_configs:
           - targets: ['localhost:9090']
+      - job_name: 'cadvisor'
+        kubernetes_sd_configs:
+          - role: pod
+            namespaces:
+              names:
+                - default
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_label_app]
+            action: keep
+            regex: cadvisor
+        metrics_path: /metrics
+        scheme: http
+
 
 ---
 #Prometheus deployment

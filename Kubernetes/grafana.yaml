@@ -1,4 +1,3 @@
-#Deployment for Grafana
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,7 +6,6 @@ metadata:
   labels:
     app: grafana
 spec:
-  #Specifications for the replica set running Grafana
   replicas: 1
   selector:
     matchLabels:
@@ -22,7 +20,6 @@ spec:
           image: grafana/grafana:latest
           ports:
             - containerPort: 3000
-          #Volume Mounts for Grafana
           volumeMounts:
             - name: grafana-config-datasources
               mountPath: /etc/grafana/provisioning/datasources
@@ -37,9 +34,7 @@ spec:
         - name: grafana-config-dashboards
           configMap:
             name: grafana-dashboards-config
-
 ---
-#Service to expose Grafana.
 apiVersion: v1
 kind: Service
 metadata:
@@ -48,17 +43,14 @@ metadata:
   labels:
     app: grafana
 spec:
-  type: NodePort
   selector:
     app: grafana
   ports:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-
-
+  type: NodePort
 ---
-#Config Map to setup Prometheus as the source map for Grafana
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -76,9 +68,7 @@ data:
         url: http://prometheus-service.monitoring.svc.cluster.local:9090
         isDefault: true
         editable: true
-
 ---
-#Config map for the Grafana interface
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -110,12 +100,7 @@ data:
         {
           "datasource": "Prometheus",
           "id": 1,
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 0
-          },
+          "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
           "targets": [
             {
               "expr": "sum by(job) (rate(process_cpu_seconds_total[1m]))",
@@ -124,8 +109,21 @@ data:
           ],
           "title": "CPU Usage",
           "type": "graph"
+        },
+        {
+          "datasource": "Prometheus",
+          "id": 2,
+          "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+          "targets": [
+            {
+              "expr": "sum(rate(container_cpu_usage_seconds_total[5m])) by (container_label_io_kubernetes_pod_name)",
+              "refId": "B"
+            }
+          ],
+          "title": "Pod CPU Usage",
+          "type": "graph"
         }
       ],
       "schemaVersion": 16,
-      "version": 1
-    }
+      "version": 1
+      }

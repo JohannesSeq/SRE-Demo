@@ -14,3 +14,11 @@
       command: minikube kubectl -- apply -f prometheus.yaml
       args:
         chdir: ../Kubernetes
+      
+  #3. Starting Grafana
+    - name: Starting Grafana on Minikube
+      command: minikube kubectl -- apply -f grafana.yaml
+
+    #4. Starting csadvisor
+    - name: Starting Cadvisor on the minikube
+      command: minikube kubectl -- apply -f grafana.yaml
