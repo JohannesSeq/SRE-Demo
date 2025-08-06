@@ -4,7 +4,7 @@
   tasks:
   #1: Starting minikube
     - name: Starting Minikube
-      command: echo minikube
+      command: minikube start
       register: minikube_start
       changed_when: "'Done' in minikube_start.stdout"
       ignore_errors: yes
