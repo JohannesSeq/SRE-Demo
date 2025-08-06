@@ -4,24 +4,20 @@
   tasks:
 
     - command:
-        chdir: /data/example
+        chdir: ./
         cmd: ls
       register: result
       tags: t1
 
     - shell:
         chdir: /data/example
-        cmd: ls
+        cmd: ../
       register: result
       tags: t2
 
-    - command: chdir=/data/example ls
+    - command: ../Kubernetes/
       register: result
       tags: t3
-
-    - shell: chdir=/data/example ls
-      register: result
-      tags: t4
 
     - debug:
         var: result.stdout

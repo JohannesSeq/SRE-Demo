@@ -9,7 +9,7 @@
       changed_when: "'Done' in minikube_start.stdout"
       ignore_errors: yes
       args:
-        chdir: ../
+        chdir: ".."
     
 
   #2. Starting Prometheus
