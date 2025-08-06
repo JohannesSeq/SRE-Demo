@@ -11,4 +11,4 @@
 
   #2. Starting Prometheus
     - name: Starting Prometheus on Minikube
-      command: cd ./Kubernetes &&  kubectl apply -f prometheus.yaml
+      command: cd /home/johannes/SRE_DEMO/SRE-Demo/Kubernetes &&  kubectl apply -f prometheus.yaml
