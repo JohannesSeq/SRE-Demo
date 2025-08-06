@@ -14,7 +14,7 @@
 
   #2. Starting Prometheus
     - name: Starting Prometheus on Minikube
-      command: kubectl apply -f prometheus.yaml
+      command: kubectl apply -f prometheus.yml
       args:
         chdir: ./Kubernetes/
     
