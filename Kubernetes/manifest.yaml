@@ -1,0 +1,13 @@
+#Manifest of the K8s cluster
+#Manifest of the pod where the application will be running, includes the flask app
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podsatan4
+  labels:
+    app: fontend
+    env: dev
+spec:
+  containers:
+    - name: monitoringapplication
+      image: johannesseq/pythonmonitoring:latest
