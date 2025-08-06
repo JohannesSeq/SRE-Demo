@@ -3,7 +3,7 @@
   hosts: all #The hosts that will be part of the playbook
   tasks:
   #1: Starting minikube
-    - name: Start Minikube
+    - name: Starting Minikube
       command: minikube start
       register: minikube_start
       changed_when: "'Done' in minikube_start.stdout"
@@ -11,7 +11,7 @@
 
   #2. Starting Prometheus
     - name: Starting Prometheus on Minikube
-      command: kubectl apply -f prometheus.yaml
+      command: ls
       args:
         chdir: ../Kubernetes/
     
