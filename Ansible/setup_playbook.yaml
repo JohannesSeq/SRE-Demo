@@ -1,0 +1,7 @@
+#Playbook in charge of setting up the application and having it up and running
+- name: Setup #The name of the playbook
+  hosts: all #The hosts that will be part of the playbook
+
+#Task to be performed by ansible
+  tasks:
+  #1: 

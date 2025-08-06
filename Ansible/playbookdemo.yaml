@@ -1,0 +1,11 @@
+#Playbook made just to testout an ansible deployment in k8s
+- name: demo #The name of the playbook
+  hosts: all #The hosts that will be part of the playbook
+  tasks:
+  #1: Starting minikube
+    - name: Start Minikube with Podman
+      command: minikube start
+      register: minikube_start
+      changed_when: "'Done' in minikube_start.stdout"
+      ignore_errors: yes
+    
